@@ -32,6 +32,13 @@ class TestLogin(unittest.TestCase):
             driver.find_element(By.XPATH, "/html//input[@id='user-name']").send_keys("standard_user")
             driver.find_element(By.XPATH, "/html//input[@id='password']").send_keys("")
             driver.find_element(By.XPATH, "/html//input[@id='login-button']").click()
+    def test_view_product_list(self):
+        driver = self.browser
+        driver.get("https://www.saucedemo.com/")
+        driver.find_element(By.XPATH, "/html//input[@id='user-name']").send_keys("standard_user")
+        driver.find_element(By.XPATH, "/html//input[@id='password']").send_keys("secret_sauce")
+        driver.find_element(By.XPATH, "/html//input[@id='login-button']").click()
+        driver.find_element(By.XPATH, "//div[@id='header_container']//span[@class='title']").validate()
 
     def tearDown(self):
         self.browser.close()
